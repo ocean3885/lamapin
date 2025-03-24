@@ -12,6 +12,11 @@
     object-fit: cover;
 }
 
+.arrow-button{
+    background: none;
+    border: none;    
+}
+
 .userButton .arrow {
     cursor: pointer;
     width: 16px;
