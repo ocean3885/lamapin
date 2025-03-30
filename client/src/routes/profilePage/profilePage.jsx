@@ -2,10 +2,11 @@ import "./profilePage.css";
 import Image from "../../components/image/image";
 import { useState } from 'react';
 import Gallery from '../../components/gallery/gallery';
-import Collections from "../../components/collections/collections";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import apiRequest from "../../utils/apiRequest";
+import Boards from "../../components/boards/boards";
+import FollowButton from './FollowButton';
 
 const ProfilePage = () => {
 
@@ -34,12 +35,15 @@ const ProfilePage = () => {
       />
       <h1 className="profileName">{data.displayName}</h1>
       <span className="profileUsername">@{data.username}</span>
-      <div className="followCounts">10 followers 20 followings</div>
+      <div className="followCounts">{data.followerCount} followers {data.followingCount} followings</div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt="" />
         <div className="profileButtons">
           <button>Message</button>
-          <button>Follow</button>
+          <FollowButton
+            isFollowing={data.isFollowing}
+            username={data.username}
+          />
         </div>
         <Image path="/general/more.svg" alt="" />
       </div>
@@ -48,7 +52,7 @@ const ProfilePage = () => {
         <span onClick={()=>setType("saved")} className={type==="saved" ? "active" : ""}>Saved</span>
       </div>
       <div className="profileView">
-        {type==="created" ? <Gallery userId={data._id} /> : <Collections/>}
+        {type==="created" ? <Gallery userId={data._id} /> : <Boards userId={data._id} />}
       </div>
     </div>
   );

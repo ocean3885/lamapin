@@ -9,6 +9,7 @@
     width: 36px;
     height: 36px;
     border: 100%;
+    border-radius: 50%;
     object-fit: cover;
 }
 
