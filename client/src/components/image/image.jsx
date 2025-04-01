@@ -1,7 +1,7 @@
 import './image.css'
 import { IKImage } from "imagekitio-react";
 
-const Image = ({ path, src, alt, className, w, h}) => {
+const Image = ({ path, src, alt, className, w, h, onClick}) => {
   return (
     <IKImage
         urlEndpoint={import.meta.env.VITE_URL_IK_ENDPOINT}
@@ -12,6 +12,7 @@ const Image = ({ path, src, alt, className, w, h}) => {
           width: w,
         }]}
         alt={alt}
+        onClick={onClick}
         loading="lazy"
         className={className}
         lqip={{ active: true, quality: 20 }}
